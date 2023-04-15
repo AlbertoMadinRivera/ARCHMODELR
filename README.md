@@ -1,5 +1,5 @@
 # **ARCH MODEL IN `R`**
-El objetivo de este repositorio es que se tenga un código base para generar modelos ARCH dentro de `r`.
+El objetivo de este repositorio es que se tenga un código base para generar modelos ARCH dentro de `R`.
 
 Dentro del mundo de la economía y la econometría, muchos alumnos de universidad y maestría se encuentran enfrente del paradigma de cursar la materia de econometría.
 Si bien, en ocasiones los profesores no son lo suficiente para adquirir el conocimiento, es de uno mismo aprender y obtener mayor información.
@@ -17,12 +17,14 @@ El paquete `rugarch` es una biblioteca de `R` que proporciona funciones para est
 Para utilizar el paquete `rugarch`, es necesario cargarlo en `R` utilizando el siguiente comando:
 
 ```{r}
+# Cargamos la librería a usar
 library(rugarch)
 ```
 
 A continuación, se puede utilizar la función `ugarchspec()` para especificar el modelo a estimar. Por ejemplo, para estimar un modelo ARCH(1), se puede utilizar el siguiente código:
 
 ```{r}
+# Usamos el modelo para generar nuestro propi modelo GARCH
 spec <- ugarchspec(variance.model = list(model = "sGARCH", garchOrder = c(1,0)), 
       mean.model = list(armaOrder = c(0,0), 
       include.mean = FALSE))
@@ -31,12 +33,14 @@ spec <- ugarchspec(variance.model = list(model = "sGARCH", garchOrder = c(1,0)),
 En este caso, se ha especificado un modelo sGARCH (GARCH estandarizado) con orden de GARCH de 1 y sin media. A continuación, se puede utilizar la función `ugarchfit()` para ajustar el modelo a los datos de la serie financiera:
 
 ```{r}
+# Hacemos una estimación
 fit <- ugarchfit(spec, data = serie_financiera)
 ```
 
 Una vez ajustado el modelo, se pueden obtener los resultados utilizando la función `summary()`:
 
 ```{r}
+# Observamos el análisis o resumen del modelo
 summary(fit)
 ```
 Los resultados incluirán información sobre los parámetros del modelo estimado, las pruebas de diagnóstico y la calidad del ajuste.
